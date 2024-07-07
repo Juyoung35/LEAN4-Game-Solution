@@ -33,9 +33,41 @@ cases h
 le_antisymm
 cases hxy with a ha
 cases hyx with b hb
-rw [ha] at hb
-nth_rewrite 1 [← add_zero x] at hb
-rw [add_assoc] at hb
-apply add_left_cancel 0 a + b x at hb
+rw [ha]
+rw [ha, add_assoc] at hb
 symm at hb
+apply add_right_eq_self at hb
 apply add_right_eq_zero at hb
+rw [hb, add_zero]
+rfl
+
++'left' tactics
++'right' tactics
+cases h with h1 h2
+right
+exact h1
+left
+exact h2
+
+le_total
+induction y with d hd
+right
+exact zero_le x
+cases hd with h1 h2
+left
+cases h1 with a ha
+use a + 1
+rw [ha, succ_eq_add_one, ← add_assoc]
+rfl
+cases h2 with b hb
+cases b with a
+left
+rw [add_zero] at hb
+rw [hb]
+exact le_succ_self d
+right
+rw [add_succ] at hb
+rw [hb]
+use a
+rw [succ_add]
+rfl
