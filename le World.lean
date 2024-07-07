@@ -71,3 +71,38 @@ rw [hb]
 use a
 rw [succ_add]
 rfl
+
+succ_le_succ
+cases hx with d hd
+use d
+rw [succ_add] at hd
+apply succ_inj at hd
+exact hd
+
+le_one
+cases x with y
+left
+rfl
+rw [one_eq_succ_zero] at hx ⊢
+apply succ_le_succ at hx
+apply le_zero at hx
+rw [hx]
+right
+rfl
+
+le_two
+cases x with y
+left
+rfl
+rw [two_eq_succ_one] at hx
+apply succ_le_succ at hx
+apply le_one at hx
+cases hx with h1 h2
+right
+left
+rw [h1, one_eq_succ_zero]
+rfl
+right
+right
+rw [h2, two_eq_succ_one]
+rfl
