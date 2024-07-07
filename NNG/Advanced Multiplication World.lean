@@ -82,3 +82,12 @@ apply mul_eq_zero at h
 cases h with h1 h2
 tauto
 exact h2
+repeat rw [mul_succ] at h
+apply add_right_cancel at h
+apply hd at h
+rw [h]
+rfl
+
+mul_right_eq_self
+nth_rewrite 2 [← mul_one a] at h
+exact mul_left_cancel a b 1 ha h
