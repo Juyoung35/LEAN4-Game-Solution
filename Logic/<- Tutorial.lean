@@ -19,3 +19,11 @@ fun h => and_intro h.right h.left
 -- or with Unicode
 λh ↦ ⟨h.right, h.left⟩
 */
+
+imp_trans
+exact fun p => h2 (h1 p)
+// exact h2 ∘ h1
+
+exact (h1 ≫ h3 ≫ h5) p
+
+and_imp
