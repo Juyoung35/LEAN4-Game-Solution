@@ -69,3 +69,16 @@ have h2 := mul_ne_zero a b
 tauto
 
 mul_left_cancel
+induction b with d hd generalizing c
+rw [mul_zero] at h
+symm at h
+apply mul_eq_zero at h
+cases h with h1 h2
+tauto
+tauto
+cases c with e
+rw [mul_zero] at h
+apply mul_eq_zero at h
+cases h with h1 h2
+tauto
+exact h2
