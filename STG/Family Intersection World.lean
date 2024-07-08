@@ -11,21 +11,27 @@ have h4 := h1 h3
 exact h2 y h4
 
 +mem_pair
-ext x
-apply Iff.intro
-intro h1 y h2
-rewrite [mem_pair] at h2
+apply Subset.antisymm
+intro x h1 y h2
 rewrite [mem_inter_iff] at h1
+rewrite [mem_pair] at h2
 cases' h2 with ha hb
 rw [ha]
 exact h1.left
 rw [hb]
 exact h1.right
-intro h1
+intro x h
 rewrite [mem_inter_iff]
-rewrite [mem_sInter] at h1
-apply And.intro
+rewrite [mem_sInter] at h
 have ha : A ⊆ A := Subset.refl A
 have haa : A = A := Subset.antisymm ha ha
-have hab : A = A ∨ A = B := Or.inl haa
-rewrite [← mem_pair A A B] at hab
+have hb : B ⊆ B := Subset.refl B
+have hbb : B = B := Subset.antisymm hb hb
+have haba : A = A ∨ A = B := Or.inl haa
+have habb : B = A ∨ B = B := Or.inr hbb
+rewrite [← mem_pair A A B] at haba
+rewrite [← mem_pair B A B] at habb
+have h2 := h A haba
+have h3 := h B habb
+exact And.intro h2 h3
+
