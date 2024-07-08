@@ -35,3 +35,27 @@ have h2 := h A haba
 have h3 := h B habb
 exact And.intro h2 h3
 
+apply Subset.antisymm
+intro x h1
+rewrite [mem_inter_iff]
+rewrite [mem_sInter] at h1
+rewrite [mem_sInter]
+rewrite [mem_sInter]
+apply And.intro
+intro y h2
+have h3 : y ∈ F ∨ y ∈ G := Or.inl h2
+rewrite [← mem_union] at h3
+exact h1 y h3
+intro y h2
+have h3 : y ∈ F ∨ y ∈ G := Or.inr h2
+rewrite [← mem_union] at h3
+exact h1 y h3
+intro x h1 y h2
+rewrite [mem_inter_iff] at h1
+have h3 := h1.left
+have h4 := h1.right
+rewrite [mem_sInter] at h3
+rewrite [mem_sInter] at h4
+cases' h2 with hf hg
+exact h3 y hf
+exact h4 y hg
