@@ -36,5 +36,8 @@ exact Or.inr (Or.inl h4)
 exact Or.inr (Or.inr h2)
 intro y h
 cases' h with h1 h2
-exact Or.inr h1
+exact Or.inl (Or.inl h1)
 cases' h2 with h3 h4
+exact Or.inl (Or.inr h3)
+rewrite [union_comm]
+exact Or.inl h4
