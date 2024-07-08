@@ -59,3 +59,28 @@ rewrite [mem_sInter] at h4
 cases' h2 with hf hg
 exact h3 y hf
 exact h4 y hg
+
+apply Iff.intro
+intro h1 x h2 y h3
+have h4 := h1 h3
+rewrite [mem_sInter] at h4
+exact h4 x h2
+intro h1 x h2 y h3
+have h4 := h1 y h3
+exact h4 h2
+
++"by_cases" tactics
+intro x h2
+rewrite [mem_union]
+by_cases ha : x ∈ A
+exact Or.inl ha
+apply Or.inr
+rewrite [mem_sInter] at h2 ⊢
+intro y h3
+have h4 := h1 y h3
+have h5 := h2 (A ∪ y) h4
+rewrite [mem_union] at h5
+cases' h5 with h6 h7
+by_contra h8
+exact ha h6
+exact h7
