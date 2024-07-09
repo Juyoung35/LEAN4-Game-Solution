@@ -18,3 +18,13 @@ exact h2
 rw [← or_assoc, ← and_assoc] at h
 exact h
 // exact or_assoc.mp ≫ h ≫ imp_trans and_assoc.mp
+
+exact iff_intro
+  ( λ(p: P ∧ Q ↔ R ∧ Q) ↦ λ(q: Q) ↦ iff_intro 
+    ( λ(pp: P) ↦ and_left (iff_mp p ⟨pp, q⟩) )
+    ( λ(pr: R) ↦ and_left (iff_mpr p ⟨pr, q⟩) )
+  )
+  ( λ(q: Q → (P ↔ R)) ↦ iff_intro
+    ( λ(pq: P ∧ Q) ↦ ⟨iff_mp (q pq.right) pq.left, pq.right⟩ )
+    ( λ(rq: R ∧ Q) ↦ ⟨iff_mpr (q rq.right) rq.left, rq.right⟩ )
+  )
