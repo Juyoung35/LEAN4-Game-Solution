@@ -36,3 +36,6 @@ exact λ(p: C ∧ D) ↦ h p.left p.right
 
 // → distributes over ∧
 exact λ(p: S) ↦ and_intro (h.left p) (h.right p)
+
+exact λ(p: R) ↦ and_intro (λ(q: S) ↦ p) (λ(r: ¬S) ↦ p)
+// exact λr ↦ ⟨λ_ ↦ r, λ_ ↦ r⟩
