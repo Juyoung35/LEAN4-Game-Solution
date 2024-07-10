@@ -56,3 +56,50 @@ apply pqnr at p
 cases p
 left
 assumption
+right
+intro
+apply h
+assumption
+intro sp
+apply rpnq
+left
+assumption
+apply mp
+assumption
+intro r
+apply h3
+intro ⟨pqnr, rpnq⟩ rr
+apply and_left
+apply and_right
+apply mp_1
+intro h4
+constructor
+intro p
+apply pqnr at p
+cases p
+left
+assumption
+
+
+intro h2 h3
+apply h
+apply iff_mp or_assoc
+assumption
+apply iff_mp and_assoc
+assumption
+
+apply iff_intro
+intro h1 h2
+cases h1
+apply iff_intro
+intro h3
+apply and_left
+apply mp
+exact and_intro h3 h2
+intro h3
+apply and_left
+apply mpr
+exact and_intro h3 h2
+intro h1
+apply iff_intro
+intro h2
