@@ -76,20 +76,25 @@ intro h4
 apply or_inl at rr
 apply rpnq at rr
 apply rpnq
+left
+assumption
 apply h4
 constructor
 intro p
-left
+right
+intro s
+apply pqnr at p
+cases p
+apply rr at h
+assumption
+apply h at r
 assumption
 intro sp
-cases sp
-apply or_inr at r
-apply rpnq at r
 assumption
-apply or_inl at sp_2
-apply rpnq at sp_2
-assumtion
-intro hhh
+apply mp
+assumption
+intro h3 h4
+apply mpr_1
 
 intro h2 h3
 apply h
@@ -113,3 +118,12 @@ exact and_intro h3 h2
 intro h1
 apply iff_intro
 intro h2
+cases h2
+have h3 := right
+apply h1 at right
+exact and_intro (iff_mp right left) h3
+intro h2
+cases h2
+have h3 := right
+apply h1 at right
+exact and_intro (iff_mpr right left) h3
