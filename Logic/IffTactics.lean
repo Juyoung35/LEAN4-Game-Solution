@@ -73,13 +73,23 @@ apply and_left
 apply and_right
 apply mp_1
 intro h4
+apply or_inl at rr
+apply rpnq at rr
+apply rpnq
+apply h4
 constructor
 intro p
-apply pqnr at p
-cases p
 left
 assumption
-
+intro sp
+cases sp
+apply or_inr at r
+apply rpnq at r
+assumption
+apply or_inl at sp_2
+apply rpnq at sp_2
+assumtion
+intro hhh
 
 intro h2 h3
 apply h
