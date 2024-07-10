@@ -25,18 +25,23 @@ intro ⟨pqnr, rpnq⟩ r
 apply h4
 constructor
 intro p
-cases pqnr p
-left
-assumption
 right
+apply pqnr at p
+cases p
 intro
-apply h r
-intro sp q
 apply rpnq
 left
 assumption
 assumption
-apply mp r
+intro
+apply h
+assumption
+intro sp
+apply rpnq
+left
+assumption
+apply mp at r
+assumption
 constructor
 apply and_left
 apply and_right
@@ -47,8 +52,7 @@ intro ⟨pqnr, rpnq⟩ r
 apply h4
 constructor
 intro p
-right
-intro
-apply rpnq
+apply pqnr at p
+cases p
 left
 assumption
