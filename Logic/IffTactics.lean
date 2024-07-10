@@ -95,6 +95,35 @@ apply mp
 assumption
 intro h3 h4
 apply mpr_1
+cases h3
+cases right
+constructor
+assumption
+constructor
+assumption
+intro s
+apply mpr at s
+apply right_1 at s
+assumption
+intro ⟨pqns, spnq⟩ s
+apply h4
+constructor
+intro p
+apply pqns at p
+cases p
+left
+assumption
+right
+intro r
+apply h at s
+assumption
+intro rp q
+apply or_inl at s
+apply spnq at s
+apply s at q
+assumption
+apply mpr
+assumption
 
 intro h2 h3
 apply h
